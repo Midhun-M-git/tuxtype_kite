@@ -958,6 +958,12 @@ static SDL_Rect srcupdate[MAX_UPDATES];
 static SDL_Rect dstupdate[MAX_UPDATES];
 static int numupdates = 0; // tracks how many blits to be done
 
+/* IMPORTANT: The 'blits' array is declared as a global symbol.
+   This can cause a severe symbol collision if an application linking
+   against this library (such as older versions of TuxTyping) also declares
+   a global array named 'blits'. Such collisions can lead to buffer overflows
+   and segmentation faults in T4K_AddRect(). Applications must ensure their
+   local blit queues are declared 'static'. */
 struct blit {
     SDL_Surface* src;
     SDL_Rect* srcrect;
@@ -1725,7 +1731,7 @@ static TTF_Font* get_font(int size)
 static TTF_Font* load_font(const char* font_name, int font_size)
 {
     TTF_Font* f;
-    char fontfile[T4K_PATH_MAX];
+    char fontfile[PATH_MAX];
     sprintf(fontfile, "%s/fonts/%s", COMMON_DATA_PREFIX, font_name);
 
     f = TTF_OpenFont(fontfile, font_size);

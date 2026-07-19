@@ -599,6 +599,11 @@ static int chooseWordlist(void)
             if (loc+1<lists)
               loc++;
           }
+          
+          if (event.key.keysym.sym == SDLK_F5 && text_to_speech_status)
+          {
+              old_loc = -1; /* force read out of current item */
+          }
       }
     }
 

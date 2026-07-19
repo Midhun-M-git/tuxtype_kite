@@ -61,6 +61,7 @@ target_link_libraries(${LIB_NAME}
     ${SDLPANGO_LIBRARY}
     ${SDLTTF_LIBRARY}
     ${LIBXML2_LIBRARIES}
+    speechd
     ${LINEBREAK_BINARY_DIR}/liblinebreak.a
     )
 
@@ -100,5 +101,6 @@ TARGET_LINK_LIBRARIES(${T4K_TESTAPP}
     ${SDLTTF_LIBRARY}
     ${LIBXML2_LIBRARIES}
     ${RSVG_LIBRARIES}
+    speechd
     ${LINEBREAK_BINARY_DIR}/liblinebreak.a
     )

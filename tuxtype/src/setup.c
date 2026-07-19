@@ -30,6 +30,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "funcs.h"
 #include "SDL_extras.h"
 
+extern void T4K_InitBlitQueue(void);
+extern SDL_Surface* T4K_GetScreen(void);
+
 
 int fs_res_x = 0;
 int fs_res_y = 0;
@@ -78,6 +81,12 @@ void GraphicsInit(void)
   
   fs_res_x = video_info->current_w;
   fs_res_y = video_info->current_h;
+  
+  if (fs_res_x == 0 || fs_res_y == 0)
+  {
+      fs_res_x = RES_X;
+      fs_res_y = RES_Y;
+  }
 
   if (settings.fullscreen == 1)
   {
@@ -109,6 +118,8 @@ void GraphicsInit(void)
   }
 
   InitBlitQueue();
+  T4K_InitBlitQueue();
+  T4K_GetScreen();
 
 
 
@@ -364,6 +375,13 @@ static int load_settings_fp(FILE* fp)
       settings.tts_volume = atoi(value);
       setting_found = 1;
     }
+    else if (strncmp(setting, "use_tts", FNLEN) == 0)
+    {
+      DEBUGCODE {fprintf(stderr, "LoadSettings: Setting use_tts to %s\n", value);}
+      settings.tts = atoi(value);
+      text_to_speech_status = settings.tts;
+      setting_found = 1;
+    }
     else
       DEBUGCODE {fprintf(stderr, "load_settings_fp(): unrecognized string: %s\n", value);}
 
@@ -432,6 +450,7 @@ void SaveSettings(void)
 	fprintf( settingsFile, "menu_music=%d\n", settings.menu_music );
 	fprintf( settingsFile, "fullscreen=%d\n", settings.fullscreen);
 	fprintf( settingsFile, "tts_volume=%d\n", settings.tts_volume);
+	fprintf( settingsFile, "use_tts=%d\n", settings.tts);
 
 
 // 	if (screen->flags & SDL_FULLSCREEN){

@@ -32,10 +32,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "SDL_extras.h"
 
 SDL_Surface* screen;
-SDL_Event  event;
 
+//TTS Thread
+SDL_Thread *tts_thread;
 
+//TTS Word announcer Thread
+SDL_Thread *tts_announcer_thread;
 
+braille_dict braille_key_value_map[100];
 
 /********************
   main : init stuff

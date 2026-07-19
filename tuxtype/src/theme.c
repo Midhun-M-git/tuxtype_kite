@@ -262,7 +262,12 @@ void ChooseTheme(void)
             if (loc+1<themes)
               loc++;
           }
-        }
+
+          if (event.key.keysym.sym == SDLK_F5 && text_to_speech_status)
+          {
+            old_loc = -1; /* force read out of current item */
+          }
+      }
 
     if (old_loc != loc)
     {

@@ -66,7 +66,6 @@ tuxtype_SOURCES = 	\
 	convert_utf.c	\
 	editor.c	\
 	input_methods.c	\
-    globals.c \
 	laser.c		\
 	loaders.c	\
 	main.c		\

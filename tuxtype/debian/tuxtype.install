@@ -1,0 +1,6 @@
+debian/tmp/usr/games	/usr/
+debian/tuxtype.xpm 	/usr/share/pixmaps/
+debian/tuxtype.svg 	/usr/share/pixmaps/
+tuxtype.desktop    	/usr/share/applications/
+tuxtype-with-braille.desktop /usr/share/applications/
+tuxtype-with-speech.desktop /usr/share/applications/

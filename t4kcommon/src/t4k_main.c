@@ -32,7 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 #endif
 
 int debug_status;
-
+SDL_Thread *tts_thread;
+int text_to_speech_status;
 
 /* set global variables */
 /* TODO look into support for locale switching at runtime

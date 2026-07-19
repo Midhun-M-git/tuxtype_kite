@@ -38,12 +38,78 @@ enum
 
 #include <math.h>
 
+#define TUX_POLL_EVENT_DEFINED 1
+
 #include "convert_utf.h"
 #include "SDL_extras.h"
 #include "globals.h"
 #include "pixels.h"
 //Just need funcs.h for CurrentBkgd()
 #include "funcs.h"
+
+extern void T4K_Tts_stop(void);
+
+void ToggleTTS(void)
+{
+    if (settings.tts)
+    {
+        /* Say "disabled" before actually turning it off so we hear the confirmation */
+        T4K_Tts_say(DEFAULT_VALUE, DEFAULT_VALUE, INTERRUPT, "Text to speech disabled.");
+        
+        settings.tts = 0;
+        text_to_speech_status = 0;
+        
+        if (in_laser_game)
+        {
+            StopTTSAnnouncer();
+        }
+        else if (in_play_game)
+        {
+            StopPlaygameTTSAnnouncer();
+        }
+    }
+    else
+    {
+        extern void* spd_connection;
+        
+        settings.tts = 1;
+        text_to_speech_status = 1;
+        
+        if (!spd_connection)
+        {
+            T4K_Tts_init();
+        }
+        
+        T4K_Tts_say(DEFAULT_VALUE, DEFAULT_VALUE, INTERRUPT, "Text to speech enabled.");
+        
+        if (in_laser_game)
+        {
+            StartTTSAnnouncer();
+        }
+        else if (in_play_game)
+        {
+            StartPlaygameTTSAnnouncer();
+        }
+    }
+    
+    /* Save preference to settings.txt immediately */
+    SaveSettings();
+}
+
+int Tux_PollEvent(SDL_Event *event) 
+{
+    int ret = SDL_PollEvent(event);
+    
+    if (ret && event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_F5) 
+    {
+        ToggleTTS();
+        
+        /* We DO NOT recursively swallow the event anymore. 
+           We let the event bubble up so menus can detect F5 and read the current item! */
+    }
+    
+    return ret;
+}
 
 /**************************************************************************/
 /*                                                                        */
@@ -817,7 +883,7 @@ static SDL_Rect srcupdate[MAX_UPDATES];
 static SDL_Rect dstupdate[MAX_UPDATES];
 static int numupdates = 0; // tracks how many blits to be done
 
-struct blit {
+static struct blit {
     SDL_Surface* src;
     SDL_Rect* srcrect;
     SDL_Rect* dstrect;

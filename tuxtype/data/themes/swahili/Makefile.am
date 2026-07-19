@@ -6,4 +6,5 @@ SUBDIRS = words
 themes_swahilidir = $(pkgdatadir)/themes/swahili
 
 dist_themes_swahili_DATA = AUTHOR \
+  keyboard.lst	\
   settings.txt

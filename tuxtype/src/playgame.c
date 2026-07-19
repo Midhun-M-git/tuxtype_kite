@@ -40,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 static int tux_max_width = 0;                // the max width of the images of tux
 static int number_max_w = 0;                 // the max width of a number image
 static int tts_announcer_switch = 1;
-static int braille_letter_pos=0;
+int braille_letter_pos=0;
 
 //static SDL_Surface* background = NULL;
 static SDL_Surface* level[NUM_LEVELS] = {NULL};
@@ -77,6 +77,12 @@ static void FreeGame(void);
 
 static void stop_tts_announcer();
 static int tts_announcer(void *struct_address);
+
+int in_play_game = 0;
+struct tts_announcer_cascade_data_struct struct_with_data_address;
+
+void StartPlaygameTTSAnnouncer(void);
+void StopPlaygameTTSAnnouncer(void);
 
 static void set_braille_letter_pos(int fishies);
 
@@ -145,18 +151,13 @@ int PlayCascade(int diflevel)
 
 
 
-  //Structure which contain the address of above struct 
-  //Why ? : Only one argument can be passed through thread    
-  //Structure which contain the address of variables 
-  struct tts_announcer_cascade_data_struct struct_with_data_address;
-  
   //Giving address of variables
   struct_with_data_address.address_of_fishies = &fishies;
 
+  in_play_game = 1;
 
   //Call announcer function in thread which annonces the word to type 
-  if(settings.tts)
-	tts_announcer_thread = SDL_CreateThread(tts_announcer, &struct_with_data_address);
+  StartPlaygameTTSAnnouncer();
   
 
   DEBUGCODE
@@ -358,8 +359,7 @@ int PlayCascade(int diflevel)
 				break;				
 
               case SDLK_ESCAPE:
-				if(settings.tts)
-					stop_tts_announcer();
+				StopPlaygameTTSAnnouncer();
 				T4K_Tts_say(DEFAULT_VALUE,DEFAULT_VALUE,INTERRUPT,gettext("Game Paused."));
                 
                 /* Pause() returns 1 if quitting, */
@@ -373,9 +373,8 @@ int PlayCascade(int diflevel)
                 else  /* Returning to game */
                 {
 				  T4K_Tts_say(DEFAULT_VALUE,DEFAULT_VALUE,INTERRUPT,gettext("Pause Released!"));
-				  //Call announcer function in thread which annonces the word to type
-				  if(settings.tts)
-						tts_announcer_thread = SDL_CreateThread(tts_announcer, &struct_with_data_address);
+				  //Call announcer function in thread which annonces the word to type 
+				  StartPlaygameTTSAnnouncer();
 				  DrawBackground();
 				}
                 break;
@@ -545,8 +544,7 @@ int PlayCascade(int diflevel)
       if (won_level) 
       {
 		 
-		if(settings.tts)
-			stop_tts_announcer();
+		StopPlaygameTTSAnnouncer();
   
         if (settings.sys_sound) 
           Mix_PlayChannel(WIN_WAV, sound[WIN_WAV], 0);
@@ -586,8 +584,7 @@ int PlayCascade(int diflevel)
         xamp = 0;
         yamp = 0;
 
-        if(settings.tts)
-			stop_tts_announcer();        
+        StopPlaygameTTSAnnouncer();        
 
         if (settings.sys_sound)
           Mix_PlayChannel(LOSE_WAV, sound[LOSE_WAV], 0);
@@ -646,8 +643,7 @@ int PlayCascade(int diflevel)
      if (still_playing)
      {
 		fishies = 0; //Otherwise thread will announce old words and cause segfault
-		if(settings.tts)
-			tts_announcer_thread = SDL_CreateThread(tts_announcer, &struct_with_data_address);
+		StartPlaygameTTSAnnouncer();
 	 }
 	
     }  /* End of post-level wrap-up  */
@@ -658,8 +654,8 @@ int PlayCascade(int diflevel)
 
   //N.x.L
   fprintf(stderr,"Exiting game");
-  if(settings.tts)
-	stop_tts_announcer();
+  StopPlaygameTTSAnnouncer();
+  in_play_game = 0;
 
 
 
@@ -1990,6 +1986,28 @@ static int tts_announcer(void *struct_address)
 static void stop_tts_announcer()
 {
 	tts_announcer_switch = 0;	
+}
+
+void StartPlaygameTTSAnnouncer(void)
+{
+    if (settings.tts && tts_announcer_switch == 0)
+    {
+        tts_announcer_switch = 1;
+        tts_announcer_thread = SDL_CreateThread(tts_announcer, &struct_with_data_address);
+    }
+}
+
+void StopPlaygameTTSAnnouncer(void)
+{
+    if (tts_announcer_switch != 0)
+    {
+        tts_announcer_switch = 0; /* Signal thread to stop */
+        if (tts_announcer_thread)
+        {
+            SDL_WaitThread(tts_announcer_thread, NULL);
+            tts_announcer_thread = NULL;
+        }
+    }
 }
 
 

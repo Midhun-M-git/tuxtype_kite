@@ -124,16 +124,15 @@ typedef struct game_option_type{
 //Declared in t4k_global.h
 extern int text_to_speech_status;
 
-struct braille_dict
+typedef struct braille_dict
 {
 	wchar_t key[100];
 	wchar_t value_begin[100];
 	wchar_t value_middle[100];
 	wchar_t value_end[100];
-};
+}braille_dict;
 
-extern struct braille_dict braille_key_value_map[100];
-
+extern braille_dict braille_key_value_map[100];
 
 /* Default values for game_option_type struct */
 /* They can be changed in the struct to other values at run-time */
@@ -349,6 +348,17 @@ extern int num_lessons;
 extern int* lesson_list_goldstars;
 extern char **lesson_list_titles;
 
+/* --- TTS Toggle Feature --- */
+extern int in_laser_game;
+extern void StartTTSAnnouncer(void);
+extern void StopTTSAnnouncer(void);
+extern void ToggleTTS(void);
 
+extern int in_play_game;
+extern void StartPlaygameTTSAnnouncer(void);
+extern void StopPlaygameTTSAnnouncer(void);
 
-
+#ifndef TUX_POLL_EVENT_DEFINED
+int Tux_PollEvent(SDL_Event *event);
+#define SDL_PollEvent(e) Tux_PollEvent(e)
+#endif

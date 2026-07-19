@@ -1,6 +1,6 @@
 ## Makefile.am for tuxtype - data/themes/deutsch:
 ## Process with Automake to create Makefile.in
-SUBDIRS = scripts words
+SUBDIRS = words
 
 themes_deutschdir = $(pkgdatadir)/themes/deutsch
 

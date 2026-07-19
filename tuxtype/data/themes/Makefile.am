@@ -5,15 +5,13 @@ SUBDIRS = armenian \
   assamese \
   asturian \
   belarussian \
-  bengali \
   bokmal \
-  brazilian-portuguese \
   bulgarian \
+  brazilian-portuguese \
   catalan \
   czech \
   dansk \
   deutsch \
-  eesti \
   espanol \
   euskara \
   french \
@@ -28,9 +26,8 @@ SUBDIRS = armenian \
   korean \
   lithuanian \
   malayalam \
-  marathi \
-  nederlands \
   nepali \
+  nederlands \
   nynorsk \
   oriya \
   punjabi \
@@ -42,7 +39,6 @@ SUBDIRS = armenian \
   tamil \
   telugu \
   thai \
-  turkana \
   ukrainian \
   wolof
 

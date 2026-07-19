@@ -34,20 +34,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "menu.h"
 
-
 /* --- Data Structure for Dirty Blitting --- */
-SDL_Rect srcupdate[MAX_UPDATES];
-SDL_Rect dstupdate[MAX_UPDATES];
-int numupdates = 0; // tracks how many blits to be done
+/* IMPORTANT: These variables MUST be static to prevent a global symbol 
+   collision with libt4k_common.so, which also defines global variables 
+   named blits, srcupdate, and dstupdate. Without 'static', the dynamic 
+   linker merges them, causing a buffer overflow and a segmentation fault 
+   in T4K_AddRect(). */
+static SDL_Rect srcupdate[MAX_UPDATES];
+static SDL_Rect dstupdate[MAX_UPDATES];
+static int numupdates = 0; // tracks how many blits to be done
 
-struct blit {
+// Type needed for trans_wipe():
+static struct blit {
     SDL_Surface *src;
     SDL_Rect *srcrect;
     SDL_Rect *dstrect;
     unsigned char type;
-};
-static struct blit blits[MAX_UPDATES];
-
+} blits[MAX_UPDATES];
 
 // Lessons available for play
 char **lesson_list_titles = NULL;
@@ -69,7 +72,7 @@ const float beak_pos[4]  = {0.36, 0.21, 0.27, 0.14};
 /* How long we show startup logo while files load, etc.: */
 const int logo_msec = 2000;
 
-//SDL_Event event;
+SDL_Event event;
 
 /* screen dimensions to which titlescreen graphics are currently rendered */
 int curr_res_x = -1;
@@ -419,8 +422,20 @@ int RenderTitleScreen(void)
 int HandleTitleScreenEvents(const SDL_Event* evt)
 {
     if (evt->type == SDL_KEYDOWN)
+    {
         if (evt->key.keysym.sym == SDLK_F10)
             HandleTitleScreenResSwitch(T4K_GetScreen()->w, T4K_GetScreen()->h);
+
+        /* F5 TTS toggle on main menu and T4K submenus: libt4k_common's
+           T4K_RunMenu() calls raw SDL_PollEvent, so it never reaches
+           Tux_PollEvent() in SDL_extras.c. Handle F5 here via the
+           handle_event callback passed into T4K_RunMenu() from menu.c. */
+        if (evt->key.keysym.sym == SDLK_F5)
+        {
+            ToggleTTS();
+            return 0;
+        }
+    }
 
     return handle_easter_egg(evt);
 }

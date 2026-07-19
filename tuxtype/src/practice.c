@@ -116,7 +116,7 @@ wchar_t *get_next_word_letters(int cur_phrase,int cursor,int till_next_space);
 wchar_t *get_next_word(int cur_phrase,int cursor);
 
 //Braille Variable
-int braille_letter_pos;
+static int braille_letter_pos;
 
 /************************************************************************/
 /*                                                                      */ 

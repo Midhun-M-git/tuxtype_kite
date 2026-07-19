@@ -62,7 +62,8 @@ static comet_type comets[MAX_COMETS];
 static city_type cities[NUM_CITIES];
 static laser_type laser;
 
-static int tts_announcer_switch = 1;
+int tts_announcer_switch = 0;
+int in_laser_game = 0;
 static int braille_letter_pos = 0;
 
 /* Local function prototypes: */
@@ -78,7 +79,6 @@ static void laser_putpixel(SDL_Surface* surface, int x, int y, Uint32 pixel);
 static void laser_unload_data(void);
 static void calc_city_pos(void);
 static void recalc_comet_pos(void);
-static void stop_tts_announcer();
 static int tts_announcer(void *unused);
 
 
@@ -95,6 +95,7 @@ int PlayLaserGame(int diff_level)
 	    num_comets_alive, paused, picked_comet, 
 	    gameover;
 	  
+	in_laser_game = 1;
 
 	//TTS Word announcer variables
 	SDL_Thread *thread;
@@ -178,8 +179,7 @@ int PlayLaserGame(int diff_level)
 
 
 	 //Call announcer function in thread which annonces the word to type 
-	if(settings.tts)
-		thread = SDL_CreateThread(tts_announcer, NULL);	
+	StartTTSAnnouncer();	
 	
 	//Inetialising braille variables
 	braille_iter = 0;
@@ -607,8 +607,7 @@ int PlayLaserGame(int diff_level)
                 if ((num_cities_alive==0) && (gameover == 0))
                 {
                     gameover = GAMEOVER_COUNTER_START;
-                    if(settings.tts)
-						stop_tts_announcer();
+                    StopTTSAnnouncer();
 					T4K_Tts_say(DEFAULT_VALUE,DEFAULT_VALUE,INTERRUPT,gettext("yep you miss it. hahh hahh haa. game over! you scored %d goodbye!"),score);
 					
 				}
@@ -751,15 +750,13 @@ int PlayLaserGame(int diff_level)
 		/* If we're in "PAUSE" mode, pause! */
 
 		if (paused) {
-			if(settings.tts)
-				stop_tts_announcer();
+			StopTTSAnnouncer();
 			T4K_Tts_say(DEFAULT_VALUE,DEFAULT_VALUE,INTERRUPT,gettext("Game Paused!"));
 			quit = Pause();
 			if(quit == 0){
 					T4K_Tts_say(DEFAULT_VALUE,DEFAULT_VALUE,INTERRUPT,gettext("Pause Released!"));
 					//Call announcer function in thread which annonces the word to type
-					if(settings.tts)
-						thread = SDL_CreateThread(tts_announcer, NULL);
+					StartTTSAnnouncer();
 			}							
 			paused = 0;
 		}
@@ -793,6 +790,7 @@ int PlayLaserGame(int diff_level)
 
   laser_unload_data();
 
+  in_laser_game = 0;
   return 1;
 }
 
@@ -1259,10 +1257,23 @@ static void laser_add_score(int inc)
 }
 
 
-/* Stop annoncing thread safely */
-static void stop_tts_announcer()
+void StopTTSAnnouncer(void) {
+    if (tts_announcer_switch != 0) {
+        tts_announcer_switch = 0; /* Signal thread to stop */
+        if (tts_announcer_thread) {
+            SDL_WaitThread(tts_announcer_thread, NULL);
+            tts_announcer_thread = NULL;
+        }
+    }
+}
+
+void StartTTSAnnouncer(void)
 {
-	tts_announcer_switch = 0;
+    if (settings.tts && tts_announcer_switch == 0)
+    {
+        tts_announcer_switch = 1;
+        SDL_CreateThread(tts_announcer, NULL);
+    }
 }
 
 

@@ -1,4 +1,4 @@
-Palabras 1
+Words Uno
 PAN
 PEZ
 HORA
