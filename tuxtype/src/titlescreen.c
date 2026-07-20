@@ -90,6 +90,12 @@ SDL_Surface* title = NULL;
 SDL_Surface* egg = NULL;
 int egg_active = 0; //are we currently using the egg cursor?
 
+/* Persistent keyboard-shortcut hint surfaces (right-side, same colour) */
+static SDL_Surface* hint_surf1 = NULL;  /* F5 speech hint  */
+static SDL_Surface* hint_surf2 = NULL;  /* F9 braille hint */
+static SDL_Rect     hint_rect1;          /* position of hint 1 */
+static SDL_Rect     hint_rect2;          /* position of hint 2 */
+
 /* locations we need */
 SDL_Rect bkg_rect,
          logo_rect,
@@ -331,7 +337,12 @@ void DrawTitleScreen(void)
     SDL_BlitSurface(current_bkg(), NULL, screen, &bkg_rect);
     SDL_BlitSurface(Tux->frame[0], NULL, screen, &tux_rect);
     SDL_BlitSurface(title, NULL, screen, &title_rect);
-    //SDL_UpdateRect(screen, 0, 0, 0, 0);
+
+    /* Blit cached hint surfaces (right side, bottom) */
+    if (hint_surf1)
+        SDL_BlitSurface(hint_surf1, NULL, screen, &hint_rect1);
+    if (hint_surf2)
+        SDL_BlitSurface(hint_surf2, NULL, screen, &hint_rect2);
 }
 
 /* Render and position all titlescreen items to match current
@@ -407,6 +418,41 @@ int RenderTitleScreen(void)
         beak.w = beak_pos[2] * tux_rect.w;
         beak.h = beak_pos[3] * tux_rect.h;
 
+        /* --- (Re-)render cached keyboard-shortcut hint surfaces --- */
+        {
+            int hint_font_size = (int)(12 * screen->w / 640.0f);
+            if (hint_font_size < 8)  hint_font_size = 8;
+            if (hint_font_size > 18) hint_font_size = 18;
+
+            if (hint_surf1) { SDL_FreeSurface(hint_surf1); hint_surf1 = NULL; }
+            if (hint_surf2) { SDL_FreeSurface(hint_surf2); hint_surf2 = NULL; }
+
+            hint_surf1 = T4K_BlackOutline("Press F5 for speech support", hint_font_size, &yellow);
+            hint_surf2 = T4K_BlackOutline("Press F9 for Braille mode",   hint_font_size, &yellow);
+
+            /* Left-align hints at menu_rect.x (= menu_pos[0] * screen_w = 0.38).
+               T4K places every button at that same x, so hints line up exactly
+               with Options/Quit in both windowed and fullscreen modes. */
+            {
+                int menu_left = (int)(0.38f * screen->w);
+
+                if (hint_surf2)
+                {
+                    hint_rect2.w = hint_surf2->w;
+                    hint_rect2.h = hint_surf2->h;
+                    hint_rect2.x = menu_left;
+                    hint_rect2.y = screen->h - hint_surf2->h - 4;
+                }
+                if (hint_surf1)
+                {
+                    hint_rect1.w = hint_surf1->w;
+                    hint_rect1.h = hint_surf1->h;
+                    hint_rect1.x = menu_left;
+                    hint_rect1.y = hint_rect2.y - hint_surf1->h - 4;
+                }
+            }
+        }
+
         curr_res_x = screen->w;
         curr_res_y = screen->h;
 
@@ -433,6 +479,13 @@ int HandleTitleScreenEvents(const SDL_Event* evt)
         if (evt->key.keysym.sym == SDLK_F5)
         {
             ToggleTTS();
+            return 0;
+        }
+
+        /* F9 Braille toggle on main menu */
+        if (evt->key.keysym.sym == SDLK_F9)
+        {
+            ToggleBraille();
             return 0;
         }
     }
@@ -491,6 +544,18 @@ void HandleTitleScreenAnimations_Reset(bool reset)
         T4K_UpdateRect(screen, &cursor);
     }
 
+    /* --- Repaint hint text every frame so it is never overdrawn --- */
+    if (hint_surf1)
+    {
+        SDL_BlitSurface(hint_surf1, NULL, screen, &hint_rect1);
+        T4K_UpdateRect(screen, &hint_rect1);
+    }
+    if (hint_surf2)
+    {
+        SDL_BlitSurface(hint_surf2, NULL, screen, &hint_rect2);
+        T4K_UpdateRect(screen, &hint_rect2);
+    }
+
     frame_counter++;
 }
 
@@ -536,6 +601,18 @@ void free_titlescreen(void)
     {
         SDL_FreeSurface(win_bkg);
         win_bkg = NULL;
+    }
+
+    /* Free cached hint surfaces */
+    if(hint_surf1)
+    {
+        SDL_FreeSurface(hint_surf1);
+        hint_surf1 = NULL;
+    }
+    if(hint_surf2)
+    {
+        SDL_FreeSurface(hint_surf2);
+        hint_surf2 = NULL;
     }
 }
 

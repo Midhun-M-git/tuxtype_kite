@@ -353,6 +353,7 @@ extern int in_laser_game;
 extern void StartTTSAnnouncer(void);
 extern void StopTTSAnnouncer(void);
 extern void ToggleTTS(void);
+extern void ToggleBraille(void);
 
 extern int in_play_game;
 extern void StartPlaygameTTSAnnouncer(void);

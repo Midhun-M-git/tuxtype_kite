@@ -96,16 +96,43 @@ void ToggleTTS(void)
     SaveSettings();
 }
 
+void ToggleBraille(void)
+{
+    if (settings.braille)
+    {
+        settings.braille = 0;
+        T4K_Tts_say(DEFAULT_VALUE, DEFAULT_VALUE, INTERRUPT, "Braille mode disabled.");
+        fprintf(stderr, "Braille mode: OFF\n");
+    }
+    else
+    {
+        settings.braille = 1;
+        T4K_Tts_say(DEFAULT_VALUE, DEFAULT_VALUE, INTERRUPT, "Braille mode enabled.");
+        fprintf(stderr, "Braille mode: ON\n");
+    }
+
+    /* Save preference to settings.txt immediately */
+    SaveSettings();
+}
+
 int Tux_PollEvent(SDL_Event *event) 
 {
     int ret = SDL_PollEvent(event);
     
-    if (ret && event->type == SDL_KEYDOWN && event->key.keysym.sym == SDLK_F5) 
+    if (ret && event->type == SDL_KEYDOWN)
     {
-        ToggleTTS();
-        
-        /* We DO NOT recursively swallow the event anymore. 
-           We let the event bubble up so menus can detect F5 and read the current item! */
+        if (event->key.keysym.sym == SDLK_F5)
+        {
+            ToggleTTS();
+            /* We DO NOT recursively swallow the event anymore.
+               We let the event bubble up so menus can detect F5 and read the current item! */
+        }
+        else if (event->key.keysym.sym == SDLK_F9)
+        {
+            ToggleBraille();
+            /* Swallow F9 so nothing else sees it */
+            return 0;
+        }
     }
     
     return ret;
