@@ -1,336 +1,111 @@
-# French translations for Tux Typing package.
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Mobin M <mobinmohan@gmail.com>, 2008
-#
-#, fuzzy
+# Translation file for TuxType
 msgid ""
 msgstr ""
-"Project-Id-Version: Tux Typing 1.5.16\n"
+"Project-Id-Version: tuxtype\n"
 "Report-Msgid-Bugs-To: tux4kids-tuxtype-dev@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2026-07-23 15:34+0530\n"
-"PO-Revision-Date: 2009-02-04 14:55+0100\n"
-"Last-Translator: Loïc Martin <loic.martin3@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/laser.c:557
-#, c-format
-msgid "Score %d"
-msgstr ""
+msgid "Setup Language"
+msgstr "Choisir la langue"
 
-#: src/laser.c:611
-#, c-format
-msgid "yep you miss it. hahh hahh haa. game over! you scored %d goodbye!"
-msgstr ""
+msgid "Edit Word Lists"
+msgstr "Éditer les listes de mots"
 
-#: src/laser.c:754
-#, fuzzy
-msgid "Game Paused!"
-msgstr "Pause!"
+msgid "Setup Braille Keys"
+msgstr "Configurer les touches Braille"
 
-#: src/laser.c:757 src/playgame.c:375
-#, fuzzy
-msgid "Pause Released!"
-msgstr "Pause!"
+msgid "Main Menu"
+msgstr "Menu principal"
 
-#: src/loaders.c:99 src/main.c:189 src/playgame.c:777
-msgid "Fish"
-msgstr "Poissons"
+msgid "Fish Cascade"
+msgstr "Cascade de poissons"
 
-#: src/loaders.c:124
-msgid "Braille mode is not available for this language. Braille disabled!"
-msgstr ""
+msgid "Comet Zap"
+msgstr "Attaque de comètes"
 
-#: src/loaders.c:136
-msgid "Tts is not available for this language. Tts disabled!"
-msgstr ""
-
-#: src/menu.c:45
 msgid "Training"
 msgstr "Entraînement"
 
-#: src/menu.c:46
-msgid "Basic Lessons"
-msgstr "Leçons de base"
+msgid "Options"
+msgstr "Options"
 
-#: src/menu.c:47
-msgid "Phrase Typing"
-msgstr "Taper des phrases"
+msgid "Project Info"
+msgstr "Infos sur le projet"
 
-#: src/menu.c:48
-msgid "Help Tux eat fish by pressing the letters on the fish"
-msgstr "Aidez Tux à manger des poissons en appuyant sur les lettres"
+msgid "Quit"
+msgstr "Quitter"
 
-#: src/menu.c:49
-msgid "Defend the cities from comets by typing letter on them using laser!"
-msgstr "Défendez les villes contre les comètes avec le laser !"
-
-# "Space Cadet" is level 1 in comet zap
-#: src/menu.c:50
-msgid "Space Cadet"
-msgstr "Cadet de l'espace"
-
-# "Pilot" is level 2 in comet zap
-#: src/menu.c:51
-msgid "Pilot"
-msgstr "Pilote"
-
-# "Ace" is level 3 in comet zap
-#: src/menu.c:52
-msgid "Ace"
-msgstr "As de l'espace"
-
-# "Commander" is level 4 in comet zap
-#: src/menu.c:53
-msgid "Commander"
-msgstr "Commandant"
-
-#: src/menu.c:54
-msgid "Moderate"
-msgstr "Modéré"
-
-#: src/menu.c:55
-msgid "Hardest"
-msgstr "Le plus difficile"
-
-#: src/menu.c:56
-msgid "Train alphabets and phrase typing"
-msgstr "S'entraîner à l'alphabet et à la saisie de phrases"
-
-#: src/menu.c:57
-msgid "Train basic alphabets"
-msgstr "S'entraîner aux alphabets de base"
-
-#: src/menu.c:58
-msgid "Train typing sentences"
-msgstr "S'entraîner à taper des phrases"
-
-#: src/menu.c:59
-msgid "Additional options"
-msgstr "Options supplémentaires"
-
-#: src/menu.c:60
-msgid "Set your language"
-msgstr "Choisir votre langue"
-
-#: src/menu.c:61
-msgid "Add or remove words"
-msgstr "Ajouter ou supprimer des mots"
-
-#: src/menu.c:62
-msgid "Choose your own keys for representing braille dots"
-msgstr "Choisir vos touches pour le braille"
-
-#: src/menu.c:63
-msgid "See the project info"
-msgstr "Voir les informations du projet"
-
-#: src/menu.c:64
-msgid "Exit to your desktop"
-msgstr "Quitter vers le bureau"
-
-#: src/menu.c:65
-msgid "Return to the main menu"
-msgstr "Retour au menu principal"
-
-#: src/pause.c:289
-msgid "Sound Effects Volume"
-msgstr "Volume des effets sonores"
-
-#: src/pause.c:298
-msgid "Music Volume"
-msgstr "Volume de la musique"
-
-#: src/pause.c:309
-msgid "Sound & Music Disabled"
-msgstr "Musique et son désactivés"
-
-#: src/pause.c:319
-msgid "Paused!"
-msgstr "Pause!"
-
-#: src/pause.c:328
-msgid "Press escape again to return to menu"
-msgstr "Appuyez encore sur la touche d'échappement pour retourner au menu"
-
-#: src/pause.c:337
-msgid "Press space bar to return to game"
-msgstr "Appuyez sur la barre espace pour retourner au jeu"
-
-#: src/playgame.c:363
-#, fuzzy
-msgid "Game Paused."
-msgstr "Pause!"
-
-#: src/playgame.c:560
-#, c-format
-msgid "Congratulation! Welcome to level %d!"
-msgstr ""
-
-#: src/playgame.c:570
-msgid "Congratulations! Thank you! please wait till it return to main menu."
-msgstr ""
-
-#: src/playgame.c:592
-msgid "yep you miss it. hahh hahh haa. game over! goodbye!"
-msgstr ""
-
-#: src/playgame.c:775
-msgid "Level"
-msgstr "Niveau"
-
-#: src/playgame.c:776
-msgid "Lives"
-msgstr "Vies"
-
-# levels for Cascade game:
-#: src/playgame.c:779
 msgid "Easy"
 msgstr "Facile"
 
-#: src/playgame.c:780
 msgid "Medium"
 msgstr "Moyen"
 
-#: src/playgame.c:781
 msgid "Hard"
 msgstr "Difficile"
 
-# general stuff
-#: src/playgame.c:782
-msgid "Practice"
-msgstr "Entraînement"
+msgid "Space Cadet"
+msgstr "Cadet de l'espace"
 
-#: src/playgame.c:793
-msgid "Congratulations"
-msgstr "Félicitations"
+msgid "Pilot"
+msgstr "Pilote"
 
-#: src/playgame.c:797
-msgid "Oh No!"
-msgstr "Oh non!"
+msgid "Ace"
+msgstr "As de l'espace"
 
-#: src/practice.c:717
-msgid "sec"
-msgstr ""
+msgid "Commander"
+msgstr "Commandant"
 
-#: src/practice.c:866
-#, c-format
-msgid ""
-"Wow. you completed sentence with %s characters in \t\t\t      %s time, your "
-"speed is %s word per minut and \t\t\t      percentage of accuracy is %s"
-msgstr ""
+msgid "Basic Lessons"
+msgstr "Leçons de base"
 
-#: src/practice.c:1632
-msgid "Time"
-msgstr ""
+msgid "Phrase Typing"
+msgstr "Saisie de phrases"
 
-#: src/practice.c:1636
-msgid "Chars"
-msgstr ""
+msgid "Instructions"
+msgstr "Instructions"
 
-#: src/practice.c:1640
-msgid "CPM"
-msgstr ""
+msgid "Moderate"
+msgstr "Modéré"
 
-#: src/practice.c:1644
-msgid "WPM"
-msgstr ""
+msgid "Hardest"
+msgstr "Plus difficile"
 
-#: src/practice.c:1648
-msgid "Errors"
-msgstr ""
+msgid "Help Tux eat fish by pressing the letters on the fish"
+msgstr "Aiuta Tux à manger des poissons en appuyant sur les lettres"
 
-#: src/practice.c:1652
-msgid "Accuracy"
-msgstr ""
+msgid "Defend the cities from comets by typing letter on them using laser!"
+msgstr "Défendez les villes des comètes en tapant les lettres au laser !"
 
-#: src/practice.c:1786
-msgid "comma"
-msgstr ""
+msgid "Train alphabets and phrase typing"
+msgstr "S'entraîner à l'alphabet et à la saisie de phrases"
 
-#: src/practice.c:1790
-msgid "full stop"
-msgstr ""
+msgid "Train basic alphabets"
+msgstr "S'entraîner à l'alphabet de base"
 
-#: src/practice.c:1794
-msgid "apostophe"
-msgstr ""
+msgid "Train typing sentences"
+msgstr "S'entraîner à taper des phrases"
 
-#: src/practice.c:1798
-msgid "semicolon"
-msgstr ""
+msgid "Additional options"
+msgstr "Options supplémentaires"
 
-#: src/practice.c:1802
-msgid "colon"
-msgstr ""
+msgid "Set your language"
+msgstr "Définir votre langue"
 
-#: src/practice.c:1806
-msgid "Qustion mark"
-msgstr ""
+msgid "Add or remove words"
+msgstr "Ajouter ou supprimer des mots"
 
-#: src/practice.c:1810
-msgid "Hyphen"
-msgstr ""
+msgid "Choose your own keys for representing braille dots"
+msgstr "Choisissez vos propres touches pour les points braille"
 
-#: src/titlescreen.c:623
-msgid ""
-"Work In Progress!\n"
-"This feature is not ready yet\n"
-"Discuss the future of TuxMath at\n"
-"tuxmath-devel@lists.sourceforge.net"
-msgstr ""
+msgid "See the project info"
+msgstr "Voir les infos du projet"
 
-#: src/titlescreen.c:1358
-msgid "WAVE"
-msgstr ""
+msgid "Exit to your desktop"
+msgstr "Quitter vers le bureau"
 
-#: src/titlescreen.c:1360
-msgid "SCORE"
-msgstr ""
+msgid "Return to the main menu"
+msgstr "Retourner au menu principal"
 
-#~ msgid "Fish Cascade"
-#~ msgstr "Cascade de poissons"
-
-#~ msgid "Edit Word Lists"
-#~ msgstr "Éditer les listes de mots"
-
-# types of games
-#~ msgid "Comet Zap"
-#~ msgstr "Destruction de comètes"
-
-#~ msgid "Options"
-#~ msgstr "Options"
-
-#~ msgid "Instructions"
-#~ msgstr "Instructions"
-
-#~ msgid "Quit"
-#~ msgstr "Quitter"
-
-#~ msgid "Main Menu"
-#~ msgstr "Menu Principal"
-
-# work in progress stuff
-#~ msgid "Work In Progress!"
-#~ msgstr "En cours de construction!"
-
-#~ msgid "This feature is not ready yet"
-#~ msgstr "Cette fonctionnalité n'est pas encore prête"
-
-#~ msgid "Discuss the future of TuxTyping at"
-#~ msgstr "Discutez du futur de TuxTyping à"
-
-# general stuff
-#, fuzzy
-#~ msgid "Phrase Practice"
-#~ msgstr "Entraînement aux phrases"
-
-#~ msgid "Alphabet"
-#~ msgstr "Alphabet"
-
-#~ msgid "Setup Keyboard"
-#~ msgstr "Régler le clavier"
