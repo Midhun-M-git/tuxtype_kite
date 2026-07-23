@@ -40,6 +40,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 static char* activities[] = { ACTIVITIES };
 #undef X
 
+/* Translatable strings from main_menu.xml for gettext xgettext extraction */
+static const char* menu_xml_strings[] = {
+    N_("Training"),
+    N_("Basic Lessons"),
+    N_("Phrase Typing"),
+    N_("Help Tux eat fish by pressing the letters on the fish"),
+    N_("Defend the cities from comets by typing letter on them using laser!"),
+    N_("Space Cadet"),
+    N_("Pilot"),
+    N_("Ace"),
+    N_("Commander"),
+    N_("Moderate"),
+    N_("Hardest"),
+    N_("Train alphabets and phrase typing"),
+    N_("Train basic alphabets"),
+    N_("Train typing sentences"),
+    N_("Additional options"),
+    N_("Set your language"),
+    N_("Add or remove words"),
+    N_("Choose your own keys for representing braille dots"),
+    N_("See the project info"),
+    N_("Exit to your desktop"),
+    N_("Return to the main menu")
+};
+
 /* actions available while viewing the menu */
 //enum { NONE, CLICK, PAGEUP, PAGEDOWN, STOP_ESC, RESIZED };
 
@@ -166,6 +191,7 @@ int handle_activity(int act, int param)
 			ChooseTheme();
 			LoadLang();
 			LoadKeyboard();
+			T4K_PrerenderAll();
 			//load_media();
             break;
 

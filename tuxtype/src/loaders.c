@@ -83,6 +83,20 @@ void LoadLang(void)
   char *s1, *s2, *s3, *s4;
   char buf [30];
   char tts_language[10];
+
+  if (settings.theme_locale_name[0] != '\0')
+  {
+    my_setenv("LANGUAGE", settings.theme_locale_name);
+    my_setenv("LC_ALL", settings.theme_locale_name);
+    my_setenv("LANG", settings.theme_locale_name);
+  }
+  else
+  {
+    my_setenv("LANGUAGE", "en");
+    my_setenv("LC_ALL", "en_US.UTF-8");
+    my_setenv("LANG", "en_US.UTF-8");
+  }
+
   s1 = setlocale(LC_ALL, settings.theme_locale_name);
   s2 = bindtextdomain(PACKAGE, TUXLOCALE);
   s3 = bind_textdomain_codeset(PACKAGE, "UTF-8");

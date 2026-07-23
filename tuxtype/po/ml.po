@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tuxtype\n"
 "Report-Msgid-Bugs-To: tux4kids-tuxtype-dev@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2012-02-02 20:16-0600\n"
+"POT-Creation-Date: 2008-08-12 17:12+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mobin M <mobinmohan@gmail.com>\n"
 "Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
@@ -18,175 +18,213 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/loaders.c:98 src/main.c:161 src/playgame.c:654
-msgid "Fish"
-msgstr "മത്സ്യം"
-
-#: src/pause.c:289
-msgid "Sound Effects Volume"
-msgstr "ശബ്ദം"
-
-#: src/pause.c:298
-msgid "Music Volume"
-msgstr "പാട്ടിന്റെ ശബ്ദം"
-
-#: src/pause.c:309
-msgid "Sound & Music Disabled"
-msgstr "ശബ്ദം പാട്ട് ഇല്ല"
-
-#: src/pause.c:319
+#: src/loaders.c:73 src/pause.c:316
+#, c-format
 msgid "Paused!"
 msgstr "തടസ്സം"
 
-#: src/pause.c:328
-msgid "Press escape again to return to menu"
-msgstr "പുറത്തോട്ടുപോകാന്‍ വീണ്ടും Esc കീ അമര്‍ത്തുക"
-
-#: src/pause.c:337
-msgid "Press space bar to return to game"
-msgstr "കളിയില്‍ തിരിച്ചെത്താന്‍ സ്പെയ്സ് കീ അടിക്കുക"
-
-#: src/playgame.c:652
-msgid "Level"
-msgstr "തട്ട്"
-
-#: src/playgame.c:653
-msgid "Lives"
-msgstr "ആയുസ്സ്"
-
-#: src/playgame.c:656 src/titlescreen.c:99
+#: src/loaders.c:74 src/playgame.c:949 src/titlescreen.c:74
+#, c-format
 msgid "Easy"
 msgstr "എളുപ്പം"
 
-#: src/playgame.c:657 src/titlescreen.c:100
+#: src/loaders.c:75 src/playgame.c:950 src/titlescreen.c:75
+#, c-format
 msgid "Medium"
 msgstr "ഇടത്തരം"
 
-#: src/playgame.c:658 src/titlescreen.c:101
+#: src/loaders.c:76 src/playgame.c:951 src/titlescreen.c:76
+#, c-format
 msgid "Hard"
 msgstr "ബുദ്ധിമുട്ടുള്ളത്"
 
-#: src/playgame.c:659
+#: src/pause.c:286
+msgid "Sound Effects Volume"
+msgstr "ശബ്ദം"
+
+#: src/pause.c:295
+msgid "Music Volume"
+msgstr "പാട്ടിന്റെ ശബ്ദം"
+
+#: src/pause.c:306
+msgid "Sound & Music Disabled"
+msgstr "ശബ്ദം പാട്ട് ഇല്ല"
+
+#: src/pause.c:325
+msgid "Press escape again to return to menu"
+msgstr "പുറത്തോട്ടുപോകാന്‍ വീണ്ടും Esc കീ അമര്‍ത്തുക"
+
+#: src/pause.c:334
+msgid "Press space bar to return to game"
+msgstr "കളിയില്‍ തിരിച്ചെത്താന്‍ സ്പെയ്സ് കീ അടിക്കുക"
+
+#: src/playgame.c:945
+msgid "Level"
+msgstr "തട്ട്"
+
+#: src/playgame.c:946
+msgid "Lives"
+msgstr "ആയുസ്സ്"
+
+#: src/playgame.c:947
+msgid "Fish"
+msgstr "മത്സ്യം"
+
+#: src/playgame.c:952 src/titlescreen.c:75
 msgid "Practice"
 msgstr "പരിശീലനം"
 
-#: src/playgame.c:670
+#: src/playgame.c:963
 msgid "Congratulations"
 msgstr "കൊള്ളാലോ!!!"
 
-#: src/playgame.c:674
+#: src/playgame.c:967
 msgid "Oh No!"
 msgstr "അയ്യോ!.."
 
-#: src/practice.c:626
-msgid "sec"
-msgstr ""
+#: src/practice.c:239
+msgid "Great!"
+msgstr "അഭിനന്ദനങ്ങള്‍!"
 
-#: src/practice.c:1440
-msgid "Time"
-msgstr ""
+#: src/practice.c:589
+msgid "Next letter "
+msgstr "അടുത്തത് :"
 
-#: src/practice.c:1444
-msgid "Chars"
-msgstr ""
+#: src/menu.c:45
+msgid "Training"
+msgstr "പരിശീലനം"
 
-#: src/practice.c:1448
-msgid "CPM"
-msgstr ""
+#: src/menu.c:46
+msgid "Basic Lessons"
+msgstr "അടിസ്ഥാന പാഠങ്ങള്‍"
 
-#: src/practice.c:1452
-msgid "WPM"
-msgstr ""
+#: src/menu.c:47
+msgid "Phrase Typing"
+msgstr "വാക്യങ്ങള്‍ ടൈപ്പ് ചെയ്യുക"
 
-#: src/practice.c:1456
-msgid "Errors"
-msgstr ""
+#: src/menu.c:48
+msgid "Help Tux eat fish by pressing the letters on the fish"
+msgstr "അക്ഷരങ്ങൾ അമർത്തി ടക്സിനെ മത്സ്യം കഴിക്കാൻ സഹായിക്കുക"
 
-#: src/practice.c:1460
-msgid "Accuracy"
-msgstr ""
+#: src/menu.c:49
+msgid "Defend the cities from comets by typing letter on them using laser!"
+msgstr "ലേസർ ഉപയോഗിച്ച് അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്ത് നഗരങ്ങളെ വാൽനക്ഷത്രങ്ങളിൽ നിന്ന് സംരക്ഷിക്കുക!"
 
-#: src/titlescreen.c:99
+#: src/menu.c:56
+msgid "Train alphabets and phrase typing"
+msgstr "അക്ഷരമാലയും വാക്യങ്ങളും ടൈപ്പ് ചെയ്യാൻ പരിശീലിക്കുക"
+
+#: src/menu.c:57
+msgid "Train basic alphabets"
+msgstr "അടിസ്ഥാന അക്ഷരങ്ങൾ പരിശീലിക്കുക"
+
+#: src/menu.c:58
+msgid "Train typing sentences"
+msgstr "വാക്യങ്ങൾ ടൈപ്പ് ചെയ്യാൻ പരിശീലിക്കുക"
+
+#: src/menu.c:59
+msgid "Additional options"
+msgstr "കൂടുതൽ ഐച്ഛികങ്ങൾ"
+
+#: src/menu.c:60
+msgid "Set your language"
+msgstr "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക"
+
+#: src/menu.c:61
+msgid "Add or remove words"
+msgstr "വാക്കുകൾ ചേർക്കുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യുക"
+
+#: src/menu.c:62
+msgid "Setup Braille Keys"
+msgstr "ബ്രെയ്‌ലി കീകൾ ക്രമീകരിക്കുക"
+
+#: src/menu.c:62
+msgid "Choose your own keys for representing braille dots"
+msgstr "ബ്രെയ്‌ലി ബിന്ദുക്കൾക്ക് സ്വന്തമായി കീകൾ തിരഞ്ഞെടുക്കുക"
+
+#: src/menu.c:54
+msgid "Moderate"
+msgstr "ഇടത്തരം"
+
+#: src/menu.c:63
+msgid "See the project info"
+msgstr "പദ്ധതിയുടെ വിവരങ്ങൾ കാണുക"
+
+#: src/menu.c:64
+msgid "Exit to your desktop"
+msgstr "ഡെസ്ക്ടോപ്പിലേക്ക് മടങ്ങുക"
+
+#: src/menu.c:65
+msgid "Return to the main menu"
+msgstr "പ്രധാന മെനുവിലേക്ക് മടങ്ങുക"
+
+#: src/titlescreen.c:74
 msgid "Fish Cascade"
 msgstr "വീഴുന്ന മത്സ്യങ്ങള്‍"
 
-#: src/titlescreen.c:99
+#: src/titlescreen.c:74
 msgid "Space Cadet"
 msgstr "ആകാശ പറവകള്‍ "
 
-#: src/titlescreen.c:99
+#: src/titlescreen.c:74
 msgid "Edit Word Lists"
 msgstr "വാക്കുകളുടെ ശേഖരം"
 
-#: src/titlescreen.c:100
+#: src/titlescreen.c:75
 msgid "Comet Zap"
 msgstr "വാല്‍ നക്ഷത്രത്തെ പിടിക്കുക"
 
-#: src/titlescreen.c:100
+#: src/titlescreen.c:75
 msgid "Pilot"
 msgstr "ആദ്യ പരിശീലനം"
 
-#: src/titlescreen.c:100
-msgid "Phrase Typing"
-msgstr ""
-
-#: src/titlescreen.c:101
+#: src/titlescreen.c:76
 msgid "Lessons"
 msgstr "പാഠങ്ങള്‍"
 
-#: src/titlescreen.c:101
+#: src/titlescreen.c:76
 msgid "Ace"
 msgstr "എയ്സ്"
 
-#: src/titlescreen.c:101
+#: src/titlescreen.c:76
 msgid "Project Info"
 msgstr "കളിയുടെ വിവരങ്ങള്‍"
 
-#: src/titlescreen.c:102
+#: src/titlescreen.c:77
 msgid "Options"
 msgstr "ഐച്ഛികങ്ങള്‍"
 
-#: src/titlescreen.c:102
+#: src/titlescreen.c:77
 msgid "Instructions"
 msgstr "നിര്‍‌ദ്ദേശങ്ങള്‍ "
 
-#: src/titlescreen.c:102
+#: src/titlescreen.c:77
 msgid "Commander"
 msgstr "കമാന്‍ഡര്‍"
 
-#: src/titlescreen.c:102
+#: src/titlescreen.c:77
 msgid "Setup Language"
 msgstr "ഭാഷ മാറ്റുക"
 
-#: src/titlescreen.c:103
+#: src/titlescreen.c:78
 msgid "Quit"
 msgstr "പുറത്തു കടക്കുക"
 
-#: src/titlescreen.c:103
+#: src/titlescreen.c:78
 msgid "Main Menu"
 msgstr "പ്രധാന മെനു"
 
-#: src/titlescreen.c:1129
+#: src/titlescreen.c:1156
 msgid "Work In Progress!"
 msgstr "പണി നടക്കുന്നുണ്ടല്ലോ"
 
-#: src/titlescreen.c:1130
+#: src/titlescreen.c:1157
 msgid "This feature is not ready yet"
 msgstr "ഇത് ഇതുവരെ ശരിയാക്കിയിട്ടില്ല."
 
-#: src/titlescreen.c:1131
+#: src/titlescreen.c:1158
 msgid "Discuss the future of TuxTyping at"
 msgstr "ടക്സ് ടൈപ്പിന്റെ  ഭാവി ചര്‍ച്ചചെയ്യാനായി ഇവിടെ പോകുക"
-
-#, fuzzy
-#~ msgid "Phrase Practice"
-#~ msgstr "പരിശീലനം"
-
-#~ msgid "Great!"
-#~ msgstr "അഭിനന്ദനങ്ങള്‍!"
-
-#~ msgid "Next letter "
-#~ msgstr "അടുത്തത് :"
 
 #, fuzzy
 #~ msgid "Easy!"
@@ -199,3 +237,23 @@ msgstr "ടക്സ് ടൈപ്പിന്റെ  ഭാവി ചര്�
 #, fuzzy
 #~ msgid "Hard!"
 #~ msgstr "ബുദ്ധിമുട്ടുള്ളത്"
+
+#, fuzzy
+#~ msgid "Game Paused!"
+#~ msgstr "തടസ്സം"
+
+#, fuzzy
+#~ msgid "Pause Released!"
+#~ msgstr "തടസ്സം"
+
+#, fuzzy
+#~ msgid "Hardest"
+#~ msgstr "ബുദ്ധിമുട്ടുള്ളത്"
+
+#, fuzzy
+#~ msgid "Game Paused."
+#~ msgstr "തടസ്സം"
+
+#, fuzzy
+#~ msgid "Phrase Practice"
+#~ msgstr "പരിശീലനം"
