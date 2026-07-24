@@ -442,6 +442,8 @@ void SaveSettings(void)
 // MDTTEMP: uncommented the following 2 lines
 	if (strncmp(settings.theme_name, "", FNLEN) != 0)
 		fprintf( settingsFile, "lang=%s\n", settings.theme_name );
+	if (strncmp(settings.theme_locale_name, "", FNLEN) != 0)
+		fprintf( settingsFile, "theme_locale_name=%s\n", settings.theme_locale_name );
 	if (settings.o_lives > 9)
 		fprintf( settingsFile, "o_lives=%d\n", settings.o_lives );
 
